@@ -1,0 +1,28 @@
+name: Build Flet APK
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: flet-actions/build@v1
+        with:
+          project-name: TEST VIDE
+          project-description: Test
+          project-version: 1.0.0
+          project-src: src
+          project-icon: 
+          project-splash: 
+          project-package: com.test.fletvide
+          project-build-number: 1
+          android-target-sdk: 34
+          android-min-sdk: 21
+          android-sign-keystore: 
+          android-sign-keystore-password: 
+          android-sign-key-alias: 
+          android-sign-key-password:
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-release
+          path: build/app/outputs/flutter-apk/app-release.apk
