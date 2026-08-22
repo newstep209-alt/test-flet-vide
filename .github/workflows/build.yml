@@ -6,22 +6,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: flet-actions/build@v1
+      - uses: actions/setup-java@v4
         with:
-          project-name: TEST VIDE
-          project-description: Test
-          project-version: 1.0.0
-          project-src: src
-          project-icon: 
-          project-splash: 
-          project-package: com.test.fletvide
-          project-build-number: 1
-          android-target-sdk: 34
-          android-min-sdk: 21
-          android-sign-keystore: 
-          android-sign-keystore-password: 
-          android-sign-key-alias: 
-          android-sign-key-password:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+      - name: Install Flet
+        run: pip install flet-cli
+      - name: Build APK
+        run: flet build apk -v
       - uses: actions/upload-artifact@v4
         with:
           name: app-release
