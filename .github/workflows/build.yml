@@ -14,10 +14,13 @@ jobs:
         with:
           flutter-version: '3.24.0'
           channel: 'stable'
+          cache: true
+      - name: Accept Android Licenses
+        run: yes | flutter doctor --android-licenses
       - name: Install Flet
         run: pip install flet-cli
       - name: Build APK
-        run: flet build apk -v
+        run: flet build apk -v --yes
       - uses: actions/upload-artifact@v4
         with:
           name: app-release
