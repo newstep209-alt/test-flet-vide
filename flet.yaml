@@ -1,3 +1,11 @@
-project_name: TEST VIDE
-description: Test
-version: 1.0.0
+app:
+  name: "IFPB C2 COMPTABILITE AL11"
+  package_name: "bf.ifpb.c2compta"
+  description: "App de révision comptabilité publique IFPB C2"
+  src: "src"
+  assets:
+    - src/assets
+android:
+  min_sdk_version: 24
+  splash_background_color: "#00FF87"
+  icon: "src/assets/logo_ifpb.png"
